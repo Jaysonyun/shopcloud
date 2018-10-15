@@ -1,0 +1,22 @@
+server:
+  port: 7002
+security:
+  basic:
+    enabled: true  #启用安全认证
+  user:
+    name: edmin
+    password: shopjava
+spring:
+  application:
+    name: shopcloud-eureka-7002
+eureka: 
+  instance: # eureak实例定义
+    hostname: eureka-7002.com # 定义Eureka实例所在的主机名称
+  client:  #添加客户端进行Erueka注册配置
+    service-url:
+      defaultZone: http://edmin:shopjava@eureka-7001.com:7001/eureka,http://edmin:shopjava@eureka-7003.com:7003/eureka
+    register-with-eureka: false   #当前Eureka的服务不注册到eureka中
+    fetch-registry: false #不通过Eureka获取注册信息
+  #server:
+    #enable-self-preservation: true # 设置为false表示关闭保护模式
+    #eviction-interval-timer-in-ms: 1000   设置注册信息清理1秒

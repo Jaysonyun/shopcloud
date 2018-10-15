@@ -1,0 +1,5 @@
+org\com\shopcloud\App.class
+org\com\shopcloud\service\impl\DeptServiceImpl.class
+org\com\shopcloud\dao\IDeptDao.class
+org\com\shopcloud\rest\DeptRest.class
+org\com\shopcloud\service\IDeptService.class

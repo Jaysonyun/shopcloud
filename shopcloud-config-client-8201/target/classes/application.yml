@@ -1,0 +1,3 @@
+spring:               
+  application:
+    name: shopcloud-config-client   #应用名称

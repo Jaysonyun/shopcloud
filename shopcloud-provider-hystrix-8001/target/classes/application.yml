@@ -1,0 +1,33 @@
+server:
+  port: 8001
+eureka:
+  client:  #添加客户端进行Erueka注册配置
+    service-url:
+      defaultZone: http://edmin:shopjava@eureka-7001.com:7001/eureka,http://edmin:shopjava@eureka-7002.com:7002/eureka,http://edmin:shopjava@eureka-7003.com:7003/eureka
+  instance:
+    instance-id: dept-8001.com   #在信息列表时显示主机名称
+    prefer-ip-address: true      #访问的路径变为IP地址
+info:
+  app.name: shop-cloud
+  company.name: www.shop.com
+  build.artifactId: shopcloud-provider-hystrix-8001
+  build.version: 0.0.1
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml    # mybatis配置文件所在路径
+  type-aliases-package: org.com.vo            # 定义所有操作类的别名所在包
+  mapper-locations:                                     # 所有的mapper映射文件
+  - classpath:mybatis/mapper/**/*.xml
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource    # 配置当前要使用的数据源的操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver      # 配置MySQL的驱动程序类
+    url: jdbc:mysql://localhost:3555/shop8001           # 数据库连接地址
+    username: root                                  # 数据库用户名
+    password: root                            # 数据库连接密码
+    dbcp2:                                          # 进行数据库连接池的配置
+      min-idle: 5                                   # 数据库连接池的最小维持连接数    
+      initial-size: 5                               # 初始化提供的连接数
+      max-total: 5                                  # 最大的连接数
+      max-wait-millis: 200                          # 等待连接获取的最大超时时间
+  application:
+    name: shopcloud-provider-dept

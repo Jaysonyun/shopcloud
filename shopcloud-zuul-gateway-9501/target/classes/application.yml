@@ -1,0 +1,56 @@
+server:
+  port: 9501
+zuul:
+  prefix: /shop-proxy
+  ignored-services:
+    "*"
+  routes:
+    shopcloud-provider-company: /company-proxy/**
+    shopcloud-provider-dept: /dept-proxy/**
+    shopcloud-provider-upload: /upload-proxy/**
+    #company.path: /company-proxy/**
+    #company.serviceId: shopcloud-provider-company
+    #company.url: http://company-8101.com:8101/company
+  #AuthorizedRequestFilter:
+    #pre:
+      #disable: true 禁用过滤器
+security:
+  basic:
+    enabled: true
+  user:
+    name: zdmin
+    password: shopjava
+eureka:
+  client:  #添加客户端进行Erueka注册配置
+    service-url:
+      defaultZone: http://edmin:shopjava@eureka-7001.com:7001/eureka,http://edmin:shopjava@eureka-7002.com:7002/eureka,http://edmin:shopjava@eureka-7003.com:7003/eureka
+  instance:
+    instance-id: gateway-9501.com   #在信息列表时显示主机名称
+    prefer-ip-address: true      #访问的路径变为IP地址
+info:
+  app.name: shop-cloud
+  company.name: www.shop.com
+  build.artifactId: shopcloud-zuul-gateway-9501
+  build.version: 0.0.1
+spring:
+  application:
+    name: shopcloud-zuul-gateway
+  http:
+    multipart:
+      enabled: true  #启用http的上传处理
+      max-file-size: 100MB  #设置单个文件最大长度
+      max-request-size: 100MB  #最大的请求文件的大小
+      file-size-threshold: 1MB  #当上传文件达到1MB的时候进行磁盘写入
+      location: /  #上传的临时目录
+#上传设置超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000   
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
+  

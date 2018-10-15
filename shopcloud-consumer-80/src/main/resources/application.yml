@@ -1,0 +1,7 @@
+server:
+  port: 80
+eureka:
+  client:  #添加客户端进行Erueka注册配置
+    service-url:
+      defaultZone: http://edmin:shopjava@eureka-7001.com:7001/eureka,http://edmin:shopjava@eureka-7002.com:7002/eureka,http://edmin:shopjava@eureka-7003.com:7003/eureka
+    register-with-eureka: false

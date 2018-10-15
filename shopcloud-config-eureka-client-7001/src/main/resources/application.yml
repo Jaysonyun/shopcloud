@@ -1,0 +1,3 @@
+spring:               
+  application:
+    name: shopcloud-config-eureka-client   #应用名称

@@ -1,0 +1,17 @@
+server:
+  port: 8101
+eureka:
+  client:  #添加客户端进行Erueka注册配置
+    service-url:
+      defaultZone: http://edmin:shopjava@eureka-7001.com:7001/eureka,http://edmin:shopjava@eureka-7002.com:7002/eureka,http://edmin:shopjava@eureka-7003.com:7003/eureka
+  instance:
+    instance-id: company-8101.com   #在信息列表时显示主机名称
+    prefer-ip-address: true      #访问的路径变为IP地址
+info:
+  app.name: shop-cloud
+  company.name: www.shop.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+spring:               
+  application:
+    name: shopcloud-config-client

@@ -1,0 +1,14 @@
+server:
+  port: 7101
+spring:               
+  application:
+    name: shopcloud-config
+  cloud:
+    config:     #SpringCloudConfig的相关配置
+      server:   #设置服务连接地址
+        git:    #本次使用的是GIT作为仓库
+          uri: https://github.com/Jaysonyun/shopconfig
+          search-paths:
+          - shopcloud-*
+encrypt:
+  key: shopjava.cn    #设置了一个加密的访问秘钥
